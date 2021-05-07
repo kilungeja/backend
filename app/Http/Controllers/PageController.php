@@ -27,7 +27,8 @@ class PageController extends Controller
 
     public function single_work(Project $project)
     {
-        $data = ["project" => $project];
+        $next_project = Project::with('images')->find($project->id + 1);
+        $data = ["project" => $project, "next_project" => $next_project];
         return view('pages/single_work', $data);
     }
 

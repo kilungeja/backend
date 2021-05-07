@@ -45,7 +45,7 @@
                 </div>
                 <img data-aos="fade-up" src="{{ $project->images[0]->image_url }}" alt="" class="img-fluid mb-4">
             </div>
-            <p class="mb-5">{{ $project->description }}</p>
+            <p class="mb-5">{{ $project->brief }}</p>
 
         </div>
 

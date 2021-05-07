@@ -15,14 +15,13 @@
             </div>
             <div class="col-10 px-5">
                 <h4 class="section-title mb-4" style="font-weight: 600;">Brief</h4>
-                <p>Mobile money service brand Tigo Pesa celebrates 10 year Anniversary, Caravan Media was briefed to
-                    come up with creative multi-visual concepts for ATL and digital. The creative theme being
-                    “Celebration digitized cash” </p>
+                <p> {{ $project->brief }} </p>
             </div>
     </section>
 </div>
 <div class=" container" data-aos="fade-up">
-    <section id="video" class="py-5 mb-4" style="background: url({{ asset('img/kili4.png') }}) center center/cover;">
+    <section id="video" class="py-5 mb-4"
+        style="background: url({{ $project->images[$project->images->count() - 1]->image_url }}) center center/cover;">
         {{-- <img src="{{ asset('img/videocam.png') }}" alt="" class="img-fluid mx-auto d-block"> --}}
     </section>
 
@@ -53,12 +52,7 @@
         <div class="p-3 d-flex justify-content-center align-items-center flex-column">
             <h4 class="section-title mb-4" data-aos="fade-up" style="font-size: 2rem;">Result</h4>
             <p class="text-center w-75" data-aos="fade-up">
-                This is an ongoing campaign aimed at restoring the snow atop the peaks of Mt. Kilimanjaro through
-                returning the green around the mountain.
-
-                By planting trees around the mountain and restoring the climate to its previous state, it will in
-                turn restore the mountain to its earlier glory with plenty of snow at the peaks
-
+                {{ $project->result }}
             </p>
         </div>
     </section>
@@ -66,20 +60,23 @@
 
 
 <!-- Next Page -->
+@if ($next_project)
 <div class="container">
     <section id="next-page" class="py-5" data-aos="fade-up">
 
         <div class="d-flex justify-content-between align-items-center">
-            <h4 class="section-sub-title">Next Project</h4>
-            <!-- <img src="{{ asset('img/arrow-right.png') }}" alt="" class="img-fluid w-25"> -->
+            <a href="{{ route('single_work', ['project'=>$next_project->id]) }}" class="mb-3">
+                <h4 class="section-sub-title d-inline mr-5">Next Project</h4>
+                <img src="{{ asset('img/arrow-right.png') }}" alt="" class="img-fluid w-25">
+            </a>
         </div>
         <div class="img-container" data-aos="zoom-in-ups" id="next-project" style="height: 400px;">
-            <img src="{{ asset('img/nextp.png') }}" alt="" class="img-fluid ">
+            <img src="{{ $next_project->images[0]->image_url }}" alt="" class="img-fluid ">
         </div>
-
-
     </section>
 </div>
+@endif
+
 
 <div class="">
     <div class="py-3 bg-black"></div>
