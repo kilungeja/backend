@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Project;
 use Illuminate\Http\Request;
 
 class PageController extends Controller
@@ -18,12 +19,16 @@ class PageController extends Controller
 
     public function work()
     {
-        return view('pages/work');
+        $projects = Project::with('images')->paginate(10);
+
+        $data = ["projects" => $projects];
+        return view('pages/work', $data);
     }
 
-    public function single_work()
+    public function single_work(Project $project)
     {
-        return view('pages/single_work');
+        $data = ["project" => $project];
+        return view('pages/single_work', $data);
     }
 
     public function contact()

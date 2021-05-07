@@ -5,8 +5,8 @@
 <div class="container" id="intro-single">
     <section id="intro-work-single" class="py-5">
 
-        <h2 class="display-4 mb-5 text-left" data-aos="fade-up" style="font-weight: bold; font-size: 6rem;">TIGO
-            Tree Planting</h2>
+        <h2 class="display-4 mb-5 text-left" data-aos="fade-up" style="font-weight: bold; font-size: 6rem;">
+            {{ $project->project_title }}</h2>
 
         <div class="row" data-aos="fade-up">
             <div class="col-2 pl-5 d-flex justify-content-center align-items-start flex-column bg-black ">
@@ -23,7 +23,7 @@
 </div>
 <div class=" container" data-aos="fade-up">
     <section id="video" class="py-5 mb-4" style="background: url({{ asset('img/kili4.png') }}) center center/cover;">
-        <img src="{{ asset('img/videocam.png') }}" alt="" class="img-fluid mx-auto d-block">
+        {{-- <img src="{{ asset('img/videocam.png') }}" alt="" class="img-fluid mx-auto d-block"> --}}
     </section>
 
 </div>
@@ -33,14 +33,15 @@
 <div class="container">
     <section id="single-work-images" data-aos="fade-up" style="height: 550px;">
         <div class="d-grid h-100">
+
+            @foreach ($project->images as $image)
             <div class=" h-100 mb-4">
-                <img src="{{ asset('img/tree1.png') }}" class="img-fluid w-100 " alt="">
+                <img src="{{ $image->image_url }}" class="img-fluid w-100 " alt="">
 
 
             </div>
-            <div class=" h-100 mb-4">
-                <img src="{{ asset('img/tree2.png') }}" class="img-fluid w-100 " alt="">
-            </div>
+            @endforeach
+
         </div>
     </section>
 </div>
