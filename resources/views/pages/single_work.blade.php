@@ -21,7 +21,7 @@
             </div>
     </section>
 </div>
-<div class="" data-aos="fade-up">
+<div class=" container" data-aos="fade-up">
     <section id="video" class="py-5 mb-4" style="background: url({{ asset('img/kili4.png') }}) center center/cover;">
         <img src="{{ asset('img/videocam.png') }}" alt="" class="img-fluid mx-auto d-block">
     </section>
@@ -30,7 +30,7 @@
 
 
 <!-- Images -->
-<div class="">
+<div class="container">
     <section id="single-work-images" data-aos="fade-up" style="height: 550px;">
         <div class="d-grid h-100">
             <div class=" h-100 mb-4">
