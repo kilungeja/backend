@@ -2,11 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Image;
 use App\Models\Project;
 use Illuminate\Http\Request;
 
 class ProjectController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +19,10 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        //
+        $project = Project::latest()->paginate();
+        $data = ['projects' => $project];
+
+        return view('dashboard.project.index', $data);
     }
 
     /**
@@ -24,7 +32,7 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        //
+        return view('dashboard.project.create');
     }
 
     /**
@@ -35,7 +43,22 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $form_data =  $request->all();
+
+        $project = new Project();
+        $project->project_title = $form_data['project_title'];
+        $project->brief = $form_data['brief'];
+        $project->result = $form_data['result'];
+        try {
+            if ($project->save()) {
+                $project->images()->create(['image_url' => $form_data['project_img']]);
+                dd('saved to db');
+            } else {
+                dd('Did not save to db');
+            }
+        } catch (\Throwable $th) {
+            dd($th);
+        }
     }
 
     /**
@@ -57,7 +80,7 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-        //
+        return view('dashboard.project.edit');
     }
 
     /**
@@ -80,6 +103,6 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
-        //
+        dd($project->delete());
     }
 }
