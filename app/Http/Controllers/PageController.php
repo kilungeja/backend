@@ -3,13 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Models\Project;
+use App\Models\Testmonial;
 use Illuminate\Http\Request;
 
 class PageController extends Controller
 {
     public function index()
     {
-        return view('pages/index');
+        $testmonials = Testmonial::latest()->get();
+        $data = ["testmonials" => $testmonials];
+        return view('pages/index', $data);
     }
 
     public function about()

@@ -30,8 +30,9 @@ Route::get('/opportunity', [PageController::class, 'opportunity'])->name('opport
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\DashboardController::class, 'index'])->name('home');
 
 Route::prefix('admin')->group(function () {
+    Route::get('/home', [App\Http\Controllers\DashboardController::class, 'index'])->name('home');
+
     Route::resource('project', ProjectController::class);
 });

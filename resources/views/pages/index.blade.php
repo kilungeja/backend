@@ -388,46 +388,29 @@
         </div>
     </div>
     <div class="container testimonials">
+        @if ($testmonials->count())
         <div class="carousel">
+            @foreach ($testmonials as $testmonial)
             <div class="d-flex justify-content-between align-items-center">
                 <div class="p-5">
                     <blockquote class="quote-card">
                         <i class="d-block">
-                            “Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur blandit purus
-                            eget
-                            nisi
-                            blandit aliquet. Donec vel laoreet nibh. Fusce varius tempus vehicula. Vestibulum
-                            venenatis,
-                            odio id aliquet mollis, nulla tellus tempor turpis, in sagittis dui purus nec elit.”
+                            “{{ $testmonial->message }}”
                         </i>
 
                         <cite>
-                            Name Here, Position, Company
+                            {{ $testmonial->name }}, {{ $testmonial->position }}, {{ $testmonial->company }}
                         </cite>
                     </blockquote>
 
                 </div>
             </div>
-            <div class="d-flex justify-content-between align-items-center">
-                <div class="p-5">
-                    <blockquote class="quote-card">
-                        <i class="d-block">
-                            “Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur blandit purus
-                            eget
-                            nisi
-                            blandit aliquet. Donec vel laoreet nibh. Fusce varius tempus vehicula. Vestibulum
-                            venenatis,
-                            odio id aliquet mollis, nulla tellus tempor turpis, in sagittis dui purus nec elit.”
-                        </i>
 
-                        <cite>
-                            Name Here, Position, Company
-                        </cite>
-                    </blockquote>
+            @endforeach
 
-                </div>
-            </div>
         </div>
+        @endif
+
     </div>
 
 </section>
