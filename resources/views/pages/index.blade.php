@@ -14,7 +14,6 @@
             </div>
             <div class="w-75 mx-auto intro-page_img-container">
                 <img src="{{ asset('img/shutterstock_1841800561 1 (1).png') }}" alt="" class="img-fluid">
-                <!-- <img src="{{ asset('img/videocam.png') }}" alt="" class="play"> -->
             </div>
         </div>
     </div>
@@ -201,52 +200,32 @@
 <!-- Projects -->
 <section id="projects" class="py-5">
     <div class="container" data-aos="fade-up">
+        @if (!$projects->count())
+        <h4 class="text-center">No projects at the moment</h4>
+        @else
         <div class="carousel">
+            @foreach ($projects as $project)
             <div class="project">
 
                 <div class="project-content"
-                    style="background: url({{ asset('img/project.png') }}) center center/cover;">
-                    <div class=" project-info justify-content-centers">
-                        <!-- <div class="project-circles">
-                                <img src="{{ asset('img/logo2.png') }}" class="ml-auto w-25" alt="">
-                            </div> -->
-                        <h5 class="mt-4 section-sub-title mb-3">Kili Half Marathon 2020: Tree Planting</h5>
-                        <p>
-                            Tigo launched an initiative
-                            to
-                            plant 20,000 trees alongside Mount Kilimanjaro to help restore the melting ice on top of
-                            the
-                            mountain. The brief is to create a TVC, and digital
-                            coverage for the series of pre and
-                            post
-                            marathon activities.
-
-                        </p>
-                        <a href="work.html"><button class="btn btn-dark mt-4">Read More</button></a>
-                    </div>
-                </div>
-            </div>
-            <div class="project">
-
-                <div class="project-content"
-                    style="background: url({{ asset('img/next.project.png') }}) center center/cover;">
+                    style="background: url({{ $project->images[0]->image_url }}) center center/cover;">
                     <div class=" project-info  justify-content-center">
-                        <!-- <div class="project-circles">
-                                <img src="{{ asset('img/logo2.png') }}" class="ml-auto w-25" alt="">
-                            </div> -->
-                        <h5 class="mt-4 section-sub-title mb-3">NMB Capital Launch</h5>
+
+                        <h5 class="mt-4 section-sub-title mb-3">{{ $project->project_title }}</h5>
                         <p>
-                            National Microfinance Bank launches its Dodoma Capital Branch as a flagship branch for
-                            Government initiative to move to Dodoma. The Guest of honor was Late Tanzania President
-                            John Pombe Magufuli. The task was to provide digital livestream and photography
-                            services.
+                            {{ $project->brief }}
 
                         </p>
-                        <a href="work.html"><button class="btn btn-dark mt-4">Read More</button></a>
+                        <a href="{{ route('single_work', ['project'=>$project->id]) }}"><button
+                                class="btn btn-dark mt-4">Read More</button></a>
                     </div>
                 </div>
             </div>
+            @endforeach
+
         </div>
+        @endif
+
 
     </div>
 </section>

@@ -19,7 +19,7 @@
         </li>
         <li>
             <a href="{{ route('testimonial.index') }}"
-                class="nav-link  {{ !!strpos(Request::path(), 'testmonial') ? 'active' : '' }}">
+                class="nav-link  {{ !!strpos(Request::path(), 'testimonial') ? 'active' : '' }}">
                 <i class="fas fa-street-view"></i>
                 Testimonials
             </a>

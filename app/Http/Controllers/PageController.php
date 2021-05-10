@@ -10,8 +10,9 @@ class PageController extends Controller
 {
     public function index()
     {
+        $projects = Project::with('images')->latest()->limit(5)->get();
         $testmonials = Testmonial::latest()->get();
-        $data = ["testmonials" => $testmonials];
+        $data = ["testmonials" => $testmonials, "projects" => $projects];
         return view('pages/index', $data);
     }
 
