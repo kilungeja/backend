@@ -57,7 +57,7 @@ class ProjectController extends Controller
 
         $images = $request->file();
         $images_urls =  [];
-        $res =  collect($images)->each(function ($file) use (&$images_urls) {
+        collect($images)->each(function ($file) use (&$images_urls) {
             $fileName = time() . '_' . $file->getClientOriginalName();
             $filePath = $file->storeAs('uploads', $fileName, 'public');
             array_push($images_urls, $filePath);
