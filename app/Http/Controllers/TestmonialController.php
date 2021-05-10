@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 
 class TestmonialController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +18,9 @@ class TestmonialController extends Controller
      */
     public function index()
     {
-        //
+        $testimonials = Testmonial::latest()->paginate();
+        $data = ['testimonials' => $testimonials];
+        return view('dashboard.testimonial.index', $data);
     }
 
     /**
@@ -24,7 +30,7 @@ class TestmonialController extends Controller
      */
     public function create()
     {
-        //
+        return view('dashboard.testimonial.create');
     }
 
     /**
@@ -35,7 +41,22 @@ class TestmonialController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $form_data = $this->validate($request, [
+            "name" => "required",
+            "company" => "required",
+            "position" => "required",
+            "message" => "required",
+        ]);
+        $testmonial = new Testmonial($form_data);
+
+        try {
+            if (!$testmonial->save()) {
+                return back();
+            }
+            return redirect()->route('testimonial.index');
+        } catch (\Throwable $th) {
+            return back();
+        }
     }
 
     /**
@@ -55,9 +76,11 @@ class TestmonialController extends Controller
      * @param  \App\Models\Testmonial  $testmonial
      * @return \Illuminate\Http\Response
      */
-    public function edit(Testmonial $testmonial)
+    public function edit(Testmonial $testimonial)
     {
-        //
+        $data = ['testimonial' => $testimonial];
+
+        return view('dashboard.testimonial.edit', $data);
     }
 
     /**
@@ -67,9 +90,22 @@ class TestmonialController extends Controller
      * @param  \App\Models\Testmonial  $testmonial
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Testmonial $testmonial)
+    public function update(Request $request, Testmonial $testimonial)
     {
-        //
+        $form_data = $this->validate($request, [
+            "name" => "required",
+            "company" => "required",
+            "position" => "required",
+            "message" => "required",
+        ]);
+
+
+
+        if (!$testimonial->update($form_data)) {
+            return back();
+        }
+
+        return redirect()->route('testimonial.index');
     }
 
     /**
@@ -78,8 +114,9 @@ class TestmonialController extends Controller
      * @param  \App\Models\Testmonial  $testmonial
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Testmonial $testmonial)
+    public function destroy(Testmonial $testimonial)
     {
-        //
+        $testimonial->delete();
+        return redirect()->route('testimonial.index');
     }
 }
