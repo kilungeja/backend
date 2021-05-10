@@ -10,7 +10,7 @@
             </div>
             <div class="col-md-10">
                 <a href="{{ route('project.create') }}" class=" ">Add project</a>
-                @if (!$projects)
+                @if (!$projects->count())
                 <h4 class="text-center">No projects at the moment</h4>
                 @else
                 <div class="table-responsive-sm">

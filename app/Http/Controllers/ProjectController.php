@@ -43,7 +43,14 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-        $form_data =  $request->all();
+
+        $form_data = $this->validate($request, [
+            'project_title' => 'required',
+            'brief' => 'required',
+            'result' => 'required',
+            'project_img' => 'required',
+        ]);
+
 
         $project = new Project();
         $project->project_title = $form_data['project_title'];
@@ -52,7 +59,7 @@ class ProjectController extends Controller
         try {
             if ($project->save()) {
                 $project->images()->create(['image_url' => $form_data['project_img']]);
-                dd('saved to db');
+                return redirect()->route('project.index');
             } else {
                 dd('Did not save to db');
             }
@@ -80,7 +87,8 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-        return view('dashboard.project.edit');
+        $data = ['project' => $project];
+        return view('dashboard.project.edit', $data);
     }
 
     /**
@@ -103,6 +111,7 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
-        dd($project->delete());
+        $project->delete();
+        return redirect()->route('project.index');
     }
 }
