@@ -43,7 +43,7 @@
 
 
                     <div>
-                        <button class=" btn btn-outline-dark mt-4"> Read More</button>
+                        <a href="{{ route('about') }}" class=" btn btn-outline-dark mt-4"> Read More</a>
                     </div>
                 </div>
                 <div class="col-md-6 about-imgs mt-4 ml-auto">
@@ -208,7 +208,7 @@
             <div class="project">
 
                 <div class="project-content"
-                    style="background: url({{ $project->images[0]->image_url }}) center center/cover;">
+                    style="background: url({{ $project->images[0]->image_url }}) center center/cover; object-fit: scale-down; ">
                     <div class=" project-info  justify-content-center">
 
                         <h5 class="mt-4 section-sub-title mb-3">{{ $project->project_title }}</h5>

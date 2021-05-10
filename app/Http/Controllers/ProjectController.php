@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Image;
 use App\Models\Project;
 use Illuminate\Http\Request;
+use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Storage;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class ProjectController extends Controller
 {
@@ -49,8 +52,16 @@ class ProjectController extends Controller
             'brief' => 'required',
             'result' => 'required',
             'project_img' => 'required',
+            'project_imgs' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ]);
 
+        $images = $request->file();
+        $images_urls =  [];
+        $res =  collect($images)->each(function ($file) use (&$images_urls) {
+            $fileName = time() . '_' . $file->getClientOriginalName();
+            $filePath = $file->storeAs('uploads', $fileName, 'public');
+            array_push($images_urls, $filePath);
+        });
 
         $project = new Project();
         $project->project_title = $form_data['project_title'];
@@ -58,7 +69,10 @@ class ProjectController extends Controller
         $project->result = $form_data['result'];
         try {
             if ($project->save()) {
-                $project->images()->create(['image_url' => $form_data['project_img']]);
+                collect($images_urls)->each(function ($img_url) use ($project) {
+                    $project->images()->create(['image_url' => '/storage/' . $img_url]);
+                });
+
                 return redirect()->route('project.index');
             } else {
                 dd('Did not save to db');
@@ -66,6 +80,12 @@ class ProjectController extends Controller
         } catch (\Throwable $th) {
             dd($th);
         }
+    }
+
+    protected function saveFiles(Request $req)
+    {
+        $fileName = time() . '.' . $req->image->getClientOriginalExtension();
+        $filePath = $req->file('image')->storeAs('images', $fileName, 'public');
     }
 
     /**
@@ -111,7 +131,26 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
+        $images = $project->images()->get();
+        $images_urls =  [];
+        $images->each(function (Image $image) use (&$images_urls) {
+            array_push($images_urls, $image->image_url);
+        });
+        $deleted = $this->delete_pictures(collect($images_urls));
+        if (!$deleted) {
+            return back();
+        }
         $project->delete();
         return redirect()->route('project.index');
+    }
+
+    private function delete_pictures(Collection $pictures)
+    {
+        $pic_paths = $pictures
+            ->map(function ($pic) {
+                return str_replace("/storage", "public", $pic);
+            });
+
+        return Storage::delete($pic_paths->toArray());
     }
 }

@@ -10,7 +10,8 @@
             </div>
             <div class="col-md-10">
                 <h4 class="text-center py-3">Add project</h4>
-                <form action="{{ route('project.store') }}" method="POST" data-aos="fade-up">
+                <form action="{{ route('project.store') }}" method="POST" data-aos="fade-up"
+                    enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
                         <label for="project_title">Project title</label>
@@ -19,6 +20,10 @@
                     <div class="form-group">
                         <label for="project_img">Project image</label>
                         <input type="text" name="project_img" id="project_img" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="project_imgs">Project images</label>
+                        <input type="file" name="project_imgs" multiple id="project_imgs">
                     </div>
                     <div class="form-group mt-3">
                         <label for="brief">Brief</label>
@@ -45,6 +50,4 @@
 <div class="">
     <div class="py-3 bg-black"></div>
 </div>
-
-
 @endsection
