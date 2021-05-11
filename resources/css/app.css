@@ -1021,3 +1021,28 @@ body
         width: 1000px;
     }
 }
+#search-form {
+    position: relative;
+}
+
+#search-form label {
+    position: absolute;
+    top: 20%;
+    left: 5%;
+    text-transform: uppercase;
+    font-weight: 300;
+    transition: 0.25s;
+}
+
+#search-form input {
+    border: 2px solid rgba(0, 0, 0, 0.4);
+    padding-left: 0.5rem !important;
+}
+
+#search-form input:focus {
+    border: 2px solid rgba(0, 0, 0, 0.774);
+}
+
+#search-form input:focus ~ #search-label {
+    transform: translateY(-100px);
+}

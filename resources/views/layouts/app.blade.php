@@ -42,10 +42,10 @@
                         visual
                         journey.</i></a>
                 <div class="search-form">
-                    <form class="form-inline my-2 my-lg-0" action="{{ route('work') }}">
-                        <input class="form-control mr-sm-2" name="query" type="search" placeholder="Search"
-                            aria-label="Search">
-                        <button class="btn btn-outline-dark">Search</button>
+                    <form id="search-form" class="form-inline my-2 my-lg-0" action="{{ route('work') }}">
+                        <label id="search-label" for="query"><i class="fas fa-search mr-1"></i>search</label>
+                        <input class="form-control mr-sm-2" name="query" type="search" aria-label="Search">
+                        {{-- <button class="btn btn-outline-dark">Search</button> --}}
                     </form>
                 </div>
                 <i class="fas fa-bars " data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
