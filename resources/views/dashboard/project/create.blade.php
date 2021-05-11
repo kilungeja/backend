@@ -9,6 +9,7 @@
                 @include('dashboard.includes.nav')
             </div>
             <div class="col-md-10">
+
                 <h4 class="text-center py-3">Add project</h4>
                 <form action="{{ route('project.store') }}" method="POST" data-aos="fade-up"
                     enctype="multipart/form-data">
@@ -16,14 +17,29 @@
                     <div class="form-group">
                         <label for="project_title">Project title*</label>
                         <input type="text" name="project_title" id="project_title" class="form-control">
+                        @error('project_title')
+                        <span class="invalid-feedback d-block" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
                     </div>
                     <div class="form-group">
                         <label for="project_imgs">Project images*</label>
                         <input type="file" name="project_imgs" multiple id="project_imgs">
+                        @error('project_imgs')
+                        <span class="invalid-feedback d-block" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
                     </div>
                     <div class="form-group mt-3">
                         <label for="brief">Brief*</label>
                         <textarea name="brief" class="form-control" placeholder="Project brief"></textarea>
+                        @error('brief')
+                        <span class="invalid-feedback d-block" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
                     </div>
                     <div class="form-group mt-3">
                         <label for="result">Result</label>

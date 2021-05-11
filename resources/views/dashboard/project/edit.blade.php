@@ -9,7 +9,7 @@
                 @include('dashboard.includes.nav')
             </div>
             <div class="col-md-10">
-                <h4 class="text-center py-3">Add project</h4>
+                <h4 class="text-center py-3">Edit project</h4>
                 <form action="{{ route('project.update', ['project'=>$project->id]) }}" method="POST"
                     data-aos="fade-up">
                     @method('PUT')
@@ -18,11 +18,21 @@
                         <label for="project_title">Project title</label>
                         <input type="text" name="project_title" value="{{ $project->project_title }}" id="project_title"
                             class="form-control">
+                        @error('project_title')
+                        <span class="invalid-feedback d-block" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
                     </div>
                     <div class="form-group mt-3">
                         <label for="brief">Brief</label>
                         <textarea name="brief" class="form-control" value=""
                             placeholder="Project brief">{{ $project->brief }}</textarea>
+                        @error('brief')
+                        <span class="invalid-feedback d-block" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
                     </div>
                     <div class="form-group mt-3">
                         <label for="result">Result</label>
