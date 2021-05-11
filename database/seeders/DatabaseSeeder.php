@@ -18,7 +18,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         User::factory()->create();
-        Testmonial::factory(5)->create();
-        Project::factory(10)->has(Image::factory(rand(2, 4)))->create();
+        // Testmonial::factory(5)->create();
+        // Project::factory(10)->has(Image::factory(rand(2, 4)))->create();
     }
 }
