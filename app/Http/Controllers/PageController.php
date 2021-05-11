@@ -58,7 +58,7 @@ class PageController extends Controller
             "message" => "required",
         ]);
 
-        $emails = ['info@caravanmedia.com'];
+        $emails = ['info@caravanmedia.co'];
 
         Mail::to($emails)->send(new ContactEmail($form_data));
 

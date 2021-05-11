@@ -17,7 +17,8 @@ class CreateProjectsTable extends Migration
             $table->id();
             $table->string('project_title');
             $table->text('brief');
-            $table->text('result');
+            $table->string('video_url')->nullable();
+            $table->text('result')->nullable();
             $table->timestamps();
         });
     }

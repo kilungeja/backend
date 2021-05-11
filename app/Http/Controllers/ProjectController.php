@@ -6,8 +6,8 @@ use App\Models\Image;
 use App\Models\Project;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class ProjectController extends Controller
 {
@@ -24,7 +24,6 @@ class ProjectController extends Controller
     {
         $project = Project::latest()->paginate();
         $data = ['projects' => $project];
-
         return view('dashboard.project.index', $data);
     }
 
@@ -50,7 +49,8 @@ class ProjectController extends Controller
         $form_data = $this->validate($request, [
             'project_title' => 'required',
             'brief' => 'required',
-            'result' => 'required',
+            'result' => '',
+            "video_url" => '',
             'project_imgs' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ]);
         $images = $request->file();
@@ -63,6 +63,7 @@ class ProjectController extends Controller
         $project = new Project();
         $project->project_title = $form_data['project_title'];
         $project->brief = $form_data['brief'];
+        $project->video_url = $form_data['video_url'];
         $project->result = $form_data['result'];
         try {
             if ($project->save()) {
@@ -115,8 +116,10 @@ class ProjectController extends Controller
         $form_data = $this->validate($request, [
             'project_title' => 'required',
             'brief' => 'required',
-            'result' => 'required',
+            'result' => '',
+            'video_url' => '',
         ]);
+
 
 
         if (!$project->update($form_data)) {

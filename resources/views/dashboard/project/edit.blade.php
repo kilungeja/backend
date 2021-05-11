@@ -29,6 +29,11 @@
                         <textarea name="result" id="result" class="form-control" value=""
                             placeholder="Project Result">{{ $project->result }}</textarea>
                     </div>
+                    <div class="form-group">
+                        <label for="video_url">Video URL</label>
+                        <input type="text" value="{{ $project->video_url }}" name="video_url" id="video_url"
+                            class="form-control">
+                    </div>
                     <div class="form-group mt-5">
                         <input type="submit" value="Update" class="btn btn-dark mt-4">
 

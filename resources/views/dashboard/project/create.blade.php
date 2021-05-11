@@ -14,21 +14,25 @@
                     enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
-                        <label for="project_title">Project title</label>
+                        <label for="project_title">Project title*</label>
                         <input type="text" name="project_title" id="project_title" class="form-control">
                     </div>
                     <div class="form-group">
-                        <label for="project_imgs">Project images</label>
+                        <label for="project_imgs">Project images*</label>
                         <input type="file" name="project_imgs" multiple id="project_imgs">
                     </div>
                     <div class="form-group mt-3">
-                        <label for="brief">Brief</label>
+                        <label for="brief">Brief*</label>
                         <textarea name="brief" class="form-control" placeholder="Project brief"></textarea>
                     </div>
                     <div class="form-group mt-3">
                         <label for="result">Result</label>
                         <textarea name="result" id="result" class="form-control"
                             placeholder="Project Result"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="video_url">Video URL</label>
+                        <input type="text" name="video_url" id="video_url" class="form-control">
                     </div>
                     <div class="form-group mt-5">
                         <input type="submit" value="save" class="btn btn-dark mt-4">

@@ -58,6 +58,19 @@
     </section>
 </div>
 
+<!-- Video -->
+@if (!empty($project->video_url))
+<div class="py-5" data-aos="fade-up">
+    <section id="video" class="">
+        <div class='iframe-container w-100'>
+            <iframe width="100%" height="550" src="{{ $project->video_url}}"></iframe>
+        </div>
+    </section>
+
+</div>
+@endif
+
+
 
 <!-- Next Page -->
 @if ($next_project)
