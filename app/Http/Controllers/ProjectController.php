@@ -51,10 +51,8 @@ class ProjectController extends Controller
             'project_title' => 'required',
             'brief' => 'required',
             'result' => 'required',
-            'project_img' => 'required',
             'project_imgs' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ]);
-
         $images = $request->file();
         $images_urls =  [];
         collect($images)->each(function ($file) use (&$images_urls) {
@@ -62,7 +60,6 @@ class ProjectController extends Controller
             $filePath = $file->storeAs('uploads', $fileName, 'public');
             array_push($images_urls, $filePath);
         });
-
         $project = new Project();
         $project->project_title = $form_data['project_title'];
         $project->brief = $form_data['brief'];
@@ -82,11 +79,7 @@ class ProjectController extends Controller
         }
     }
 
-    protected function saveFiles(Request $req)
-    {
-        $fileName = time() . '.' . $req->image->getClientOriginalExtension();
-        $filePath = $req->file('image')->storeAs('images', $fileName, 'public');
-    }
+
 
     /**
      * Display the specified resource.
@@ -96,7 +89,6 @@ class ProjectController extends Controller
      */
     public function show(Project $project)
     {
-        //
     }
 
     /**
@@ -120,7 +112,18 @@ class ProjectController extends Controller
      */
     public function update(Request $request, Project $project)
     {
-        //
+        $form_data = $this->validate($request, [
+            'project_title' => 'required',
+            'brief' => 'required',
+            'result' => 'required',
+        ]);
+
+
+        if (!$project->update($form_data)) {
+            return back();
+        }
+
+        return redirect()->route('project.index');
     }
 
     /**

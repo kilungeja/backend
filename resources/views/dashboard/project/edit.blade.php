@@ -19,10 +19,6 @@
                         <input type="text" name="project_title" value="{{ $project->project_title }}" id="project_title"
                             class="form-control">
                     </div>
-                    <div class="form-group">
-                        <label for="project_img">Project image</label>
-                        <input type="text" name="project_img" id="project_img" class="form-control">
-                    </div>
                     <div class="form-group mt-3">
                         <label for="brief">Brief</label>
                         <textarea name="brief" class="form-control" value=""

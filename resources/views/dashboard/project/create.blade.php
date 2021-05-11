@@ -18,10 +18,6 @@
                         <input type="text" name="project_title" id="project_title" class="form-control">
                     </div>
                     <div class="form-group">
-                        <label for="project_img">Project image</label>
-                        <input type="text" name="project_img" id="project_img" class="form-control">
-                    </div>
-                    <div class="form-group">
                         <label for="project_imgs">Project images</label>
                         <input type="file" name="project_imgs" multiple id="project_imgs">
                     </div>

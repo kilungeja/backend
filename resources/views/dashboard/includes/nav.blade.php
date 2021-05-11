@@ -4,12 +4,6 @@
     </small>
     <hr>
     <ul class="nav nav-pills flex-column mb-auto">
-        <li class="nav-item">
-            <a href="#" class="nav-link">
-                <i class="fas fa-igloo"></i>
-                Home
-            </a>
-        </li>
         <li>
             <a href="{{ route('project.index') }}"
                 class="nav-link  {{ !!strpos(Request::path(), 'project') ? 'active' : '' }}">
