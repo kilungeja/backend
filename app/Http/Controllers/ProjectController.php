@@ -51,9 +51,10 @@ class ProjectController extends Controller
             'brief' => 'required',
             'result' => '',
             "video_url" => '',
-            'project_imgs' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+            'project_imgs.*' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ]);
-        $images = $request->file();
+
+        $images = $request->file('project_imgs');
         $images_urls =  [];
         collect($images)->each(function ($file) use (&$images_urls) {
             $fileName = time() . '_' . $file->getClientOriginalName();

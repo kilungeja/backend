@@ -34,10 +34,7 @@
         <div class="d-grid h-100">
 
             @foreach ($project->images as $image)
-            <div class=" h-100 mb-4">
-                <img src="{{ $image->image_url }}" class="img-fluid w-100 " alt="">
-
-
+            <div class=" h-100 mb-4" style="background: url({{ $image->image_url }}) no-repeat center center/cover">
             </div>
             @endforeach
 

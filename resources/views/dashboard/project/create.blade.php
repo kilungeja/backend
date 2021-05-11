@@ -25,7 +25,7 @@
                     </div>
                     <div class="form-group">
                         <label for="project_imgs">Project images*</label>
-                        <input type="file" name="project_imgs" multiple id="project_imgs">
+                        <input type="file" name="project_imgs[]" multiple id="project_imgs">
                         @error('project_imgs')
                         <span class="invalid-feedback d-block" role="alert">
                             <strong>{{ $message }}</strong>
