@@ -1,6 +1,8 @@
 $(document).ready(function () {
     const nav = $('body > section:nth-child(1) > nav')
 
+    initMap()
+
     const navHeight = nav.height()
     $(window).scroll(function () {
         try {
@@ -99,3 +101,24 @@ function team() {
     const teamContainer = document.querySelector('#team .row')
     teamContainer.classList.add('carousel')
 }
+
+function openMap(url) {
+    var win = window.open(url, "_blank");
+    if (!win) {
+      return;
+    }
+    win.focus();
+  }
+  
+  function initMap() {
+    const mapDiv = document.querySelector("#contact");
+    const url =
+      "https://www.google.com/maps/place/JOEY+GROUP+INTERNATIONAL/@-6.7747182,39.2496937,15.65z/data=!4m5!3m4!1s0x185c4db19449d243:0x24d3abcad81b02cc!8m2!3d-6.777826!4d39.25579";
+    if (!mapDiv) {
+      return;
+    }
+  
+    mapDiv.addEventListener("click", function (e) {
+      openMap(url);
+    });
+  }
