@@ -47,8 +47,9 @@
             together.<br>
             For job enquiries, please email <strong> info@caravanmedia.com</strong> with your CV.</p>
 
-        <form action="#" method="POST" data-aos="fade-up">
+        <form action="{{ route('contact.post') }}" method="POST" data-aos="fade-up">
             <div class="row">
+                @csrf
                 <div class="col-md-5 mb-4">
                     <div class="form-group">
                         <input type="text" placeholder="Full Name" name="name" class="form-control">
@@ -57,7 +58,7 @@
                         <input type="email" placeholder="E-mail Address" name="email" class="form-control">
                     </div>
                     <div class="form-group mt-5">
-                        <input type="text" placeholder="Company/Organization" name="email" class="form-control">
+                        <input type="text" placeholder="Company/Organization" name="organization" class="form-control">
                     </div>
                 </div>
                 <div class="col-md-5 mb-4 ml-auto">

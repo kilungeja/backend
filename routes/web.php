@@ -23,6 +23,8 @@ Route::get('/work', [PageController::class, 'work'])->name('work');
 Route::get('/work/{project}', [PageController::class, 'single_work'])->name('single_work');
 
 Route::get('/contact', [PageController::class, 'contact'])->name('contact');
+Route::post('/contact', [PageController::class, 'post_contact'])->name('contact.post');
+
 Route::get('/opportunity', [PageController::class, 'opportunity'])->name('opportunity');
 
 

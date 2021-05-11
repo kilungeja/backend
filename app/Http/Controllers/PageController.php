@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\ContactEmail;
 use App\Models\Project;
 use App\Models\Testmonial;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class PageController extends Controller
 {
@@ -39,6 +41,22 @@ class PageController extends Controller
     public function contact()
     {
         return view('pages/contact');
+    }
+
+    public function post_contact(Request $request)
+    {
+        $form_data  = $this->validate($request, [
+            "name" => "required",
+            "email" => "required",
+            "organization" => "required",
+            "message" => "required",
+        ]);
+
+        $emails = ['tumpalenazarius@gmail.com'];
+
+        Mail::to($emails)->send(new ContactEmail($form_data));
+
+        return back();
     }
     public function opportunity()
     {
