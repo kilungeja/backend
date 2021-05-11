@@ -30,8 +30,12 @@ Route::get('/opportunity', [PageController::class, 'opportunity'])->name('opport
 
 
 
+// preventing user from registering
 
-Auth::routes();
+Auth::routes([
+    'register' => false,
+    'verify' => false,
+]);
 
 
 Route::prefix('admin')->group(function () {
