@@ -1031,6 +1031,7 @@ body
     left: 5%;
     text-transform: uppercase;
     font-weight: 300;
+    pointer-events: none;
     transition: 0.25s;
 }
 
@@ -1043,6 +1044,13 @@ body
     border: 2px solid rgba(0, 0, 0, 0.774);
 }
 
-#search-form input:focus #search-label {
-    transform: translateY(-100px);
+#search-form input:focus ~ #search-label {
+    transform: translateY(-10px);
+    opacity: 0;
+}
+
+@media (max-width: 375px) {
+    #search-form input {
+        width: 150px;
+    }
 }

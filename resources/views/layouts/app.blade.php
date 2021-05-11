@@ -43,8 +43,9 @@
                         journey.</i></a>
                 <div class="search-form">
                     <form id="search-form" class="form-inline my-2 my-lg-0" action="{{ route('work') }}">
-                        <label id="search-label" for="query"><i class="fas fa-search mr-1"></i>search</label>
                         <input class="form-control mr-sm-2" name="query" type="search" aria-label="Search">
+                        <label id="search-label" for="query"><i class="fas fa-search mr-1"></i>search</label>
+
                         {{-- <button class="btn btn-outline-dark">Search</button> --}}
                     </form>
                 </div>
