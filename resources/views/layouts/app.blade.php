@@ -41,6 +41,13 @@
                         on a
                         visual
                         journey.</i></a>
+                <div class="search-form">
+                    <form class="form-inline my-2 my-lg-0" action="{{ route('work') }}">
+                        <input class="form-control mr-sm-2" name="query" type="search" placeholder="Search"
+                            aria-label="Search">
+                        <button class="btn btn-outline-dark">Search</button>
+                    </form>
+                </div>
                 <i class="fas fa-bars " data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
                     aria-expanded="false" aria-label="Toggle navigation"></i>
 
@@ -115,7 +122,8 @@
 
                         </div>
                         <i class="d-inline-block mb-auto mt-3">Embarking on a visual journey.</i>
-                        <small class="mt-5  copyright"><i class="far fa-copyright"></i> 2021 Caravan
+                        <small class="mt-5  copyright"><i class="far fa-copyright"></i> {{ now()->format('Y') }}
+                            Caravan
                             Media</small>
                     </div>
                 </div>

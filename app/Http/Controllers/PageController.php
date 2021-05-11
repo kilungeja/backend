@@ -23,10 +23,16 @@ class PageController extends Controller
         return view('pages/about');
     }
 
-    public function work()
+    public function work(Request $request)
     {
-        $projects = Project::with('images')->paginate(10);
-
+        $query = $request->get('query');
+        $projects = Project::query();
+        if ($query != null) {
+            $projects = $projects->where('project_title', 'LIKE', '%' . $query . '%')
+                ->orWhere('brief', 'LIKE', '%' . $query . '%')
+                ->orWhere('result', 'LIKE', '%' . $query . '%');
+        }
+        $projects = $projects->with('images')->paginate(10);
         $data = ["projects" => $projects];
         return view('pages/work', $data);
     }
@@ -52,7 +58,7 @@ class PageController extends Controller
             "message" => "required",
         ]);
 
-        $emails = ['tumpalenazarius@gmail.com'];
+        $emails = ['info@caravanmedia.com'];
 
         Mail::to($emails)->send(new ContactEmail($form_data));
 
