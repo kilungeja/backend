@@ -81,7 +81,8 @@
     <section id="next-page" class="py-5" data-aos="fade-up">
 
         <div class="d-flex justify-content-between align-items-center">
-            <a href="{{ route('single_work', ['project'=>$next_project->id]) }}" class="mb-3">
+            <a href="{{ route('single_work', ['project'=>$next_project->id]) }}" style="text-decoration: none"
+                class="mb-3 text-dark">
                 <h4 class="section-sub-title d-inline mr-5">Next Project</h4>
                 <img src="{{ asset('img/arrow-right.png') }}" alt="" class="img-fluid w-25">
             </a>
