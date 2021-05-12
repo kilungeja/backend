@@ -208,7 +208,7 @@
             <div class="project">
 
                 <div class="project-content"
-                    style="background: url({{ $project->images[0]->image_url }}) center center/cover; object-fit: scale-down; ">
+                    style="background: url('{{ $project->images[0]->image_url }}') center center/cover; object-fit: scale-down; ">
                     <div class=" project-info  justify-content-center">
 
                         <h5 class="mt-4 section-sub-title mb-3">{{ $project->project_title }}</h5>
