@@ -1,8 +1,10 @@
 {
     "/js/app.js": "/js/app.js",
     "/js/main.js": "/js/main.js",
+    "/js/jquery.fancybox.min.js": "/js/jquery.fancybox.min.js",
     "/css/app.css": "/css/app.css",
     "/css/main.css": "/css/main.css",
+    "/css/fancybox.min.css": "/css/fancybox.min.css",
     "/img/A modern media production house..png": "/img/A modern media production house..png",
     "/img/Abba.png": "/img/Abba.png",
     "/img/Assa.png": "/img/Assa.png",

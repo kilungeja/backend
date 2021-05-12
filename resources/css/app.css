@@ -545,31 +545,20 @@ body > section:nth-child(1) > nav > div > a > i {
     height: 61.5vh !important;
 } */
 
-.d-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-}
-
-@media (max-width: 767px) {
-    .d-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-.d-grid > div {
+.images > div,
+.images img {
     overflow: hidden;
     transition: 0.25s;
 }
 
-.d-grid > div:hover {
+.images > div:hover {
     cursor: pointer;
     transform: scale(1.1);
     box-shadow: 0 2px 10px rgba(19, 20, 27, 0.301),
         0 0px 0px rgba(30, 32, 41, 0.336);
 }
 
-.d-grid img:hover {
+.images img:hover {
     transform: scale(1.7);
 }
 

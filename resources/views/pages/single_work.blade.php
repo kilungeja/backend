@@ -30,15 +30,21 @@
 
 <!-- Images -->
 <div class="container">
-    <section id="single-work-images" data-aos="fade-up" style="height: 550px;">
-        <div class="d-grid h-100">
+    <section id="single-work-images" data-aos="fade-up">
+
+        <div class="row align-items-stretch images">
 
             @foreach ($project->images as $image)
-            <div class=" h-100 mb-4" style="background: url('{{ $image->image_url }}') no-repeat center center/cover">
+            <div class="col-6 col-md-6 col-lg-3 " data-aos="fade-up">
+                <a class="fancybox" rel="gallery1" href="{{ $image->image_url }}" title="{{ $project->project_title }}">
+                    <img class="img-fluid" src="{{ $image->image_url }}" alt="" />
+                </a>
             </div>
             @endforeach
-
         </div>
+
+
+
     </section>
 </div>
 

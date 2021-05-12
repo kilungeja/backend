@@ -24,8 +24,8 @@
     <link rel="stylesheet" type="text/css"
         href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-
     <link href="{{ asset('css/main.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/fancybox.min.css') }}" rel="stylesheet">
 
 </head>
 
@@ -187,7 +187,7 @@
 
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-
+<script src="{{ asset('js/jquery.fancybox.min.js') }}"></script>
 <script src="{{ asset('js/main.js') }}"></script>
 
 </html>

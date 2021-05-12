@@ -1,3 +1,4 @@
+
 $(document).ready(function () {
     const nav = $('body > section:nth-child(1) > nav')
 
@@ -15,6 +16,12 @@ $(document).ready(function () {
         const scroll = $(window).scrollTop()
 
     })
+
+		// $(".fancybox").fancybox({
+        //     openEffect	: 'none',
+        //     closeEffect	: 'none'
+        // });
+        $(".fancybox").fancybox();
 
 
 
