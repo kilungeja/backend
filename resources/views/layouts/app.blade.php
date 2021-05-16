@@ -82,7 +82,7 @@
                     <div class="d-flex align-items-center ">
                         <div class="p-3">
                             <p>+255 716 461 216</p>
-                            <p>info@caravanmedia.com</p>
+                            <p>info@caravanmedia.co</p>
                             <p>
                                 <a href="https://www.linkedin.com/company/caravanmediatz" target="_blank"><i
                                         class=" text-white fab fa-linkedin mr-3"></i></a>
@@ -156,7 +156,7 @@
                     </div>
                     <div>
                         <h6 class="mt-5 text-uppercase">e-mail</h6>
-                        <p class="">info@caravanmedia.com</p>
+                        <p class="">info@caravanmedia.co</p>
                     </div>
                     <div>
                         <h6 class="mt-md-5 text-uppercase">address</h6>
