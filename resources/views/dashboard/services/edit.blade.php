@@ -34,7 +34,7 @@
                         @enderror
                     </div>
                     <div class="form-group mt-5">
-                        <input type="submit" value="save" class="btn btn-dark mt-4">
+                        <input type="submit" value="update" class="btn btn-dark mt-4">
                     </div>
                 </form>
 

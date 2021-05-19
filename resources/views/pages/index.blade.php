@@ -135,7 +135,7 @@
                     <div class="team-member_content">
                         <h5>{{ $member->first_name }} {{ $member->last_name }}</h5>
                         <p class="d-flex justify-content-between" style="font-size: large;">
-                            <small>{{ $member->role->role_name }}</small><a target="_blank"
+                            <small>{{ $member->role ? $member->role->role_name : '' }}</small><a target="_blank"
                                 href="{{ $member->linkedIn_account }}"><i class=" text-white fab fa-linkedin"></i></a>
                         </p>
                     </div>

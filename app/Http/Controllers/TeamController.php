@@ -15,7 +15,7 @@ class TeamController extends Controller
      */
     public function index()
     {
-        $teams = User::with('role')->latest()->paginate();
+        $teams = User::where('id', '!=', 1)->with('role')->latest()->paginate();
         $data = ['teams' => $teams];
         return view('dashboard.team.index', $data);
     }
