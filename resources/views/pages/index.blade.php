@@ -58,142 +58,33 @@
 <!-- Services -->
 <section id="services" class="">
     <div class="container">
+        @if (!$services->count())
+        <h4 class="text-center">No services at the moment</h4>
+        @else
         <h4 class="section-title mb-4" data-aos="fade-up" style="font-weight: 600;">Our Services</h4>
-        <div class="row">
+        <div class="row justify-content-between">
+            @foreach ($services as $service)
             <div class="col-md-5 d-flex flex-row mb-3" data-aos="fade-up">
                 <div class="mr-2 p-1">
                     <div class="service-item "></div>
                 </div>
                 <div>
-                    <h5 data-toggle="collapse" data-target="#serviceCollapse1" aria-expanded="false"
-                        aria-controls="serviceCollapse1" class="d-flex justify-content-between align-items-center">
+                    <h5 data-toggle="collapse" data-target="#serviceCollapse{{ $service->id }}" aria-expanded="false"
+                        aria-controls="serviceCollapse{{ $service->id }}"
+                        class="d-flex justify-content-between align-items-center">
                         <strong>
-                            Digital Coverage Photography
+                            {{ $service->title }}
                         </strong>
                         <i class="fas fa-angle-down rotate-icon"></i>
                     </h5>
-                    <p class="collapse" id="serviceCollapse1">We produce instant sharable photos for fast digital
-                        information and commercial purposes.
-                        Being a fast paced digital market we have just the right team and technology to enable us to
-                        deliver fast smart content. </p>
+                    <p class="collapse" id="serviceCollapse{{ $service->id }}">{{ $service->description }}</p>
                 </div>
             </div>
-            <div class="col-md-5 d-flex flex-row ml-auto mb-3 " data-aos="fade-up ">
-                <div class="mr-2 p-1">
-                    <div class="service-item"></div>
-                </div>
-                <div class="">
-                    <h5 data-toggle="collapse" data-target="#serviceCollapse2" aria-expanded="false"
-                        aria-controls="serviceCollapse2" class="d-flex justify-content-between align-items-center">
-                        <strong>Product Photography</strong>
-                        <i class="fas fa-angle-down rotate-icon "></i>
-                    </h5>
-                    <p class="collapse" id="serviceCollapse2">We have a thing for products -- really, we love how a
-                        good photograph of a product can help
-                        change a customer's perspective on the product and influence a purchase decision. </p>
-                </div>
-            </div>
-            <div class="col-md-5 d-flex flex-row mb-3" data-aos="fade-up">
-                <div class="mr-2 p-1">
-                    <div class="service-item"></div>
-                </div>
-                <div>
-                    <h5 data-toggle="collapse" data-target="#serviceCollapse3" aria-expanded="false"
-                        aria-controls="serviceCollapse3" class="d-flex justify-content-between align-items-center">
-                        <strong>Commercial Photography</strong>
-                        <i class="fas fa-angle-down rotate-icon "></i>
-                    </h5>
-                    <p class="collapse" id="serviceCollapse3">We have a pool of models aged from 1 - 50 who can fit
-                        in a variety of photoshoots for
-                        commercial and advertising purposes. We have executed briefs for small, medium and large
-                        enterprises in East Africa.
-                    </p>
-                </div>
-            </div>
-            <div class="col-md-5 d-flex flex-row ml-auto mb-3" data-aos="fade-up">
-                <div class="mr-2 p-1">
-                    <div class="service-item"></div>
-                </div>
-                <div>
-                    <h5 data-toggle="collapse" data-target="#serviceCollapse4" aria-expanded="false"
-                        aria-controls="serviceCollapse4" class="d-flex justify-content-between align-items-center">
-                        <strong>Corporate Photography</strong>
-                        <i class="fas fa-angle-down rotate-icon "></i>
-                    </h5>
-                    <p class="collapse" id="serviceCollapse4">We have a physical and mobile photo studio that
-                        enables
-                        us to produce high-end executive
-                        photography. Our team is very hands on with making sure the executives are comfortable
-                        during shoots.. </p>
-                </div>
-            </div>
-            <div class="col-md-5 d-flex flex-row mb-3" data-aos="fade-up">
-                <div class="mr-2 p-1">
-                    <div class="service-item"></div>
-                </div>
-                <div>
-                    <h5 data-toggle="collapse" data-target="#serviceCollapse5" aria-expanded="false"
-                        aria-controls="serviceCollapse5" class="d-flex justify-content-between align-items-center">
-                        <strong>Studio Photography</strong>
-                        <i class="fas fa-angle-down rotate-icon "></i>
-                    </h5>
-                    <p class="collapse" id="serviceCollapse5">Our Studio is well equipped with lighting and
-                        photography equipment for internal use and
-                        client purposes. We produce high quality images using a good deal of creativity and
-                        teamwork. </p>
-                </div>
-            </div>
-            <div class="col-md-5 d-flex flex-row ml-auto mb-3" data-aos="fade-up">
-                <div class="mr-2 p-1">
-                    <div class="service-item"></div>
-                </div>
-                <div>
-                    <h5 data-toggle="collapse" data-target="#serviceCollapse6" aria-expanded="false"
-                        aria-controls="serviceCollapse6" class="d-flex justify-content-between align-items-center">
-                        <strong>Commercial Advertisements</strong>
-                        <i class="fas fa-angle-down rotate-icon "></i>
-                    </h5>
-                    <p class="collapse" id="serviceCollapse6">We produce creative and high-end TVCs and digital
-                        media
-                        adverts for Corporates and brands.
-                        Our Team is widely experienced in areas of casting, wardrobe, sound engineering,
-                        videography, choreography, lighting, and visual effects. </p>
-                </div>
-            </div>
-            <div class="col-md-5 d-flex flex-row  mb-3" data-aos="fade-up">
-                <div class="mr-2 p-1">
-                    <div class="service-item"></div>
-                </div>
-                <div>
-                    <h5 data-toggle="collapse" data-target="#serviceCollapse7" aria-expanded="false"
-                        aria-controls="serviceCollapse7" class="d-flex justify-content-between align-items-center">
-                        <strong>Digital Press Coverage</strong>
-                        <i class="fas fa-angle-down rotate-icon "></i>
-                    </h5>
-                    <p class="collapse" id="serviceCollapse7">Quick Turnaround Press conference videos can add great
-                        value to your company by informing
-                        your audience instantly using social media while you await for the PR strategy to take place
-                        in news outlets. </p>
-                </div>
-            </div>
-            <div class="col-md-5 d-flex flex-row ml-auto" data-aos="fade-up">
-                <div class="mr-2 p-1">
-                    <div class="service-item"></div>
-                </div>
-                <div>
-                    <h5 data-toggle="collapse" data-target="#serviceCollapse8" aria-expanded="false"
-                        aria-controls="serviceCollapse8" class="d-flex justify-content-between align-items-center">
-                        <strong>Digital Livestream</strong>
-                        <i class="fas fa-angle-down  rotate-icon "></i>
-                    </h5>
-                    <p class="collapse" id="serviceCollapse8">We can integrate a TV Style broadcast technology and
-                        stream it on your company website,
-                        facebook, twitter and instagram channels.
-                    </p>
-                </div>
-            </div>
+            @endforeach
 
         </div>
+        @endif
+
     </div>
 </section>
 

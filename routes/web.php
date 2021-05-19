@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\TestmonialController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -43,4 +44,5 @@ Route::prefix('admin')->group(function () {
 
     Route::resource('project', ProjectController::class);
     Route::resource('testimonial', TestmonialController::class);
+    Route::resource('service', ServiceController::class);
 });

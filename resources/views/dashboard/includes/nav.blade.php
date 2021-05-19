@@ -5,6 +5,13 @@
     <hr>
     <ul class="nav nav-pills flex-column mb-auto">
         <li>
+            <a href="{{ route('service.index') }}"
+                class="nav-link  {{ !!strpos(Request::path(), 'service') ? 'active' : '' }}">
+                <i class="fas fa-robot"></i>
+                services
+            </a>
+        </li>
+        <li>
             <a href="{{ route('project.index') }}"
                 class="nav-link  {{ !!strpos(Request::path(), 'project') ? 'active' : '' }}">
                 <i class="fas fa-project-diagram"></i>
