@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class TeamController extends Controller
 {
@@ -122,6 +123,7 @@ class TeamController extends Controller
      */
     public function destroy(User $team)
     {
+        Storage::delete(str_replace('/storage', 'public', $team->profile_pic));
         $team->delete();
         return redirect()->route('team.index');
     }
