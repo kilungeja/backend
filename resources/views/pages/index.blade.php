@@ -123,115 +123,30 @@
 
 <!-- team -->
 <div class="container">
+    @if (!$team_members->count())
+    <h4 class="text-center">No team member at the moment</h4>
+    @else
     <section id="team">
         <h4 class="section-title mb-4" style="font-weight: 600;">Meet The Team</h4>
         <div class="row">
-
+            @foreach ($team_members as $member)
             <div class="col-md-3 team-member p-3">
-                <div style="background: url({{ asset('img/rsz_caravan-1.jpg') }}) center top/cover;">
+                <div style="background: url({{ $member->profile_pic }}) center top/cover;">
                     <div class="team-member_content">
-                        <h5>Jason James</h5>
+                        <h5>{{ $member->first_name }} {{ $member->last_name }}</h5>
                         <p class="d-flex justify-content-between" style="font-size: large;">
-                            <small>Group CEO</small><a href="https://www.linkedin.com/in/jason-james-37369975/"><i
+                            <small>Group CEO</small><a target="_blank" href="{{ $member->linkedIn_account }}"><i
                                     class=" text-white fab fa-linkedin"></i></a>
                         </p>
                     </div>
                 </div>
-
             </div>
-            <div class="col-md-3 team-member p-3">
-                <div style="background: url({{ asset('img/rsz_caravan-45\ -\ Copy.jpg') }}) center top/cover;">
-                    <div class="team-member_content">
-                        <h5>Moses Francis</h5>
-                        <p class="d-flex justify-content-between" style="font-size: large;">
-                            <small>Account Manager</small><a
-                                href="https://www.linkedin.com/in/moses-francis-01b048197/"><i
-                                    class=" text-white fab fa-linkedin"></i></a>
-                        </p>
-                    </div>
-                </div>
-
-            </div>
-            <div class="col-md-3 team-member p-3">
-                <div style="background: url({{ asset('img/rsz_caravan-13.jpg') }}) center top/cover;">
-                    <div class="team-member_content">
-                        <h5>Hebron Geofrey</h5>
-                        <p class="d-flex justify-content-between" style="font-size: large;">
-                            <small>Production Manager</small><a
-                                href="https://www.linkedin.com/in/hebron-geofrey-4361ab121/"><i
-                                    class=" text-white fab fa-linkedin"></i></a>
-                        </p>
-                    </div>
-                </div>
-
-            </div>
-            <div class="col-md-3 team-member p-3">
-                <div style="background: url({{ asset('img/rsz_caravan-9\ -\ Copy.jpg') }}) center top/cover;">
-                    <div class="team-member_content">
-                        <h5>Shareen Mphuru</h5>
-                        <p class="d-flex justify-content-between" style="font-size: large;">
-                            <small>Project Coordinator</small><a href=""><i class=" text-white fab fa-linkedin"></i></a>
-                        </p>
-                    </div>
-                </div>
-
-            </div>
-            <div class="col-md-3 team-member p-3">
-                <div style="background: url({{ asset('img/rsz_caravan-11\ -\ Copy.jpg') }}) center top/cover;">
-                    <div class="team-member_content justify-content-bottoms ">
-                        <h5>Millen Kajanja</h5>
-                        <p class="d-flex justify-content-between" style="font-size: large;">
-                            <small>Props & Wardrobe </small><a
-                                href="https://www.linkedin.com/in/millen-salvatory-484230156/" target="_blank"><i
-                                    class=" text-white fab fa-linkedin"></i></a>
-                        </p>
-                    </div>
-                </div>
-
-            </div>
-            <div class="col-md-3 team-member p-3">
-                <div style="background: url({{ asset('img/rsz_caravan-4\ -\ Copy.jpg') }}) center top/cover;">
-                    <div class="team-member_content">
-                        <h5>Karebu Panjobelo</h5>
-                        <p class="d-flex justify-content-between" style="font-size: large;">
-                            <small>Production Associate</small><i class=" text-white fab fa-linkedin"></i>
-                        </p>
-                    </div>
-                </div>
-
-            </div>
-            <div class="col-md-3 team-member p-3">
-                <div style="background: url({{ asset('img/rsz_caravan-51.jpg') }}) center top/cover;">
-                    <div class="team-member_content">
-                        <h5>Richard Aswile</h5>
-                        <p class="d-flex justify-content-between" style="font-size: large;">
-                            <small>Production Associate</small><a
-                                href="https://www.linkedin.com/in/aswile-richard-9b760613a/"><i
-                                    class=" text-white fab fa-linkedin"></i></a>
-                        </p>
-                    </div>
-                </div>
-
-            </div>
-            <div class="col-md-3 team-member p-3">
-                <div style="background: url({{ asset('img/rsz_caravan-57.jpg') }}) center top/cover;">
-                    <div class="team-member_content">
-                        <h5>Alex Hamis</h5>
-                        <p class="d-flex justify-content-between" style="font-size: large;">
-                            <small>Production Associate</small><a href="https://www.linkedin.com/in/alexhamistz/"><i
-                                    class=" text-white fab fa-linkedin"></i></a>
-                        </p>
-
-                    </div>
-                </div>
-
-            </div>
-
-
+            @endforeach
 
         </div>
-</div>
-</section>
+    </section>
+    @endif
+
 </div>
 <!--clients  -->
 

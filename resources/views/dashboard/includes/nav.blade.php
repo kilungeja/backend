@@ -5,6 +5,13 @@
     <hr>
     <ul class="nav nav-pills flex-column mb-auto">
         <li>
+            <a href="{{ route('team.index') }}"
+                class="nav-link  {{ !!strpos(Request::path(), 'team') ? 'active' : '' }}">
+                <i class="fas fa-users-cog"></i>
+                team members
+            </a>
+        </li>
+        <li>
             <a href="{{ route('service.index') }}"
                 class="nav-link  {{ !!strpos(Request::path(), 'service') ? 'active' : '' }}">
                 <i class="fas fa-robot"></i>
@@ -15,14 +22,14 @@
             <a href="{{ route('project.index') }}"
                 class="nav-link  {{ !!strpos(Request::path(), 'project') ? 'active' : '' }}">
                 <i class="fas fa-project-diagram"></i>
-                Projects
+                projects
             </a>
         </li>
         <li>
             <a href="{{ route('testimonial.index') }}"
                 class="nav-link  {{ !!strpos(Request::path(), 'testimonial') ? 'active' : '' }}">
                 <i class="fas fa-street-view"></i>
-                Testimonials
+                testimonials
             </a>
         </li>
         <li>

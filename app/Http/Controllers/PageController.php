@@ -6,6 +6,7 @@ use App\Mail\ContactEmail;
 use App\Models\Project;
 use App\Models\Service;
 use App\Models\Testmonial;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
@@ -16,7 +17,8 @@ class PageController extends Controller
         $projects = Project::with('images')->latest()->limit(5)->get();
         $testmonials = Testmonial::latest()->get();
         $services = Service::latest()->get();
-        $data = ["testmonials" => $testmonials, "projects" => $projects, "services" => $services];
+        $team_members = User::latest()->get();
+        $data = ["testmonials" => $testmonials, "projects" => $projects, "services" => $services, "team_members" => $team_members];
         return view('pages/index', $data);
     }
 

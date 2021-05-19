@@ -23,11 +23,21 @@ class UserFactory extends Factory
      */
     public function definition()
     {
+        // return [
+        //     'first_name' => "Admin",
+        //     'last_name' => "Admin",
+        //     'email' => "info@caravanmedia.co",
+        //     'email_verified_at' => now(),
+        //     'password' => Hash::make(env('ADMIN_PASS')), // password
+        //     'remember_token' => Str::random(10),
+        // ];
         return [
-            'name' => "Admin",
-            'email' => "info@caravanmedia.co",
+            'first_name' => $this->faker->firstName(),
+            'last_name' => $this->faker->lastName(),
+            'email' => $this->faker->email(),
+            'profile_pic' => $this->faker->imageUrl(),
             'email_verified_at' => now(),
-            'password' => Hash::make(env('ADMIN_PASS')), // password
+            'password' => Hash::make('password'), // password
             'remember_token' => Str::random(10),
         ];
     }
