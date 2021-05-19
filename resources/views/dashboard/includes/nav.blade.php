@@ -7,8 +7,15 @@
         <li>
             <a href="{{ route('team.index') }}"
                 class="nav-link  {{ !!strpos(Request::path(), 'team') ? 'active' : '' }}">
-                <i class="fas fa-users-cog"></i>
+                <i class="fas fa-users"></i>
                 team members
+            </a>
+        </li>
+        <li>
+            <a href="{{ route('role.index') }}"
+                class="nav-link  {{ !!strpos(Request::path(), 'role') ? 'active' : '' }}">
+                <i class="fas fa-users-cog"></i>
+                roles
             </a>
         </li>
         <li>

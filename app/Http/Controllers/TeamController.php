@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,7 @@ class TeamController extends Controller
      */
     public function index()
     {
-        $teams = User::latest()->paginate();
+        $teams = User::with('role')->latest()->paginate();
         $data = ['teams' => $teams];
         return view('dashboard.team.index', $data);
     }
@@ -26,7 +27,9 @@ class TeamController extends Controller
      */
     public function create()
     {
-        return view('dashboard.team.create');
+        $roles = Role::all();
+        $data = ['roles' => $roles];
+        return view('dashboard.team.create', $data);
     }
 
     /**
@@ -41,6 +44,7 @@ class TeamController extends Controller
             "first_name" => "required",
             "last_name" => "required",
             "email" => "required",
+            'role_id' => "required",
             "linkedIn_account" => "required",
             "profile_pic"  =>  'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ]);
@@ -80,7 +84,8 @@ class TeamController extends Controller
      */
     public function edit(User $team)
     {
-        $data = ['team' => $team];
+        $roles = Role::all();
+        $data = ['team' => $team, 'roles' => $roles];
 
         return view('dashboard.team.edit', $data);
     }
@@ -98,6 +103,7 @@ class TeamController extends Controller
             "first_name" => "required",
             "last_name" => "required",
             "email" => "required",
+            'role_id' => "required",
             "linkedIn_account" => "required",
         ]);
 

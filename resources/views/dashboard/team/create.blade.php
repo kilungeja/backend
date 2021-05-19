@@ -13,6 +13,26 @@
                 <form action="{{ route('team.store') }}" method="POST" data-aos="fade-up" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
+                        <label for="role_id">role</label>
+                        <select name="role_id" id="role_id" class="form-control">
+                            @if (!$roles->count())
+                            <option disabled selected>There are no roles at the moment. Add one</option>
+                            @else
+                            <option disabled selected>Select role for a team member</option>
+                            @foreach ($roles as $role)
+                            <option value="{{ $role->id }}">{{ $role->role_name }}</option>
+                            @endforeach
+
+                            @endif
+
+                        </select>
+                        @error('role_id')
+                        <span class="invalid-feedback d-block" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+                    </div>
+                    <div class="form-group">
                         <label for="first_name">first name</label>
                         <input type="text" name="first_name" id="first_name" class="form-control">
                         @error('first_name')

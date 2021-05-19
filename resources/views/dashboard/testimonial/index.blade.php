@@ -38,9 +38,10 @@
                                 <td>
                                     <a href="{{ route('testimonial.edit', ['testimonial'=>$testimonial->id]) }}"
                                         class="text-success"><i class="far fa-edit"></i></a>
-                                    <a href="#!" onclick="javascript:document.getElementById('delete-form').submit()"
+                                    <a href="#!"
+                                        onclick="javascript:document.getElementById('delete-form-{{ $testimonial->id }}').submit()"
                                         class="text-danger"><i class="far fa-trash-alt"></i></a>
-                                    <form id="delete-form"
+                                    <form id="delete-form-{{ $testimonial->id }}"
                                         action="{{ route('testimonial.destroy', ['testimonial'=>$testimonial->id]) }}"
                                         method="POST" class="d-none">
                                         @method('DELETE')

@@ -20,6 +20,7 @@
                                 <th scope="col">#</th>
                                 <th scope="col">name</th>
                                 <th scope="col">email address </th>
+                                <th scope="col">role </th>
                                 <th scope="col">Date</th>
                                 <th scope="col">Action</th>
                             </tr>
@@ -30,14 +31,17 @@
                                 <th scope="row">{{ $loop->index + 1 }}</th>
                                 <td>{{ $team->first_name }} {{ $team->last_name }}</td>
                                 <td>{{ $team->email }}</td>
+                                <td>{{ $team->role->role_name }}</td>
                                 <td>{{ $team->created_at->diffForHumans() }}</td>
                                 <td>
                                     <a href="{{ route('team.edit', ['team'=>$team->id]) }}" class="text-success"><i
                                             class="far fa-edit"></i></a>
-                                    <a href="#!" onclick="javascript:document.getElementById('delete-form').submit()"
+                                    <a href="#!"
+                                        onclick="javascript:document.getElementById('delete-form-{{ $team->id }}').submit()"
                                         class="text-danger"><i class="far fa-trash-alt"></i></a>
-                                    <form id="delete-form" action="{{ route('team.destroy', ['team'=>$team->id]) }}"
-                                        method="POST" class="d-none">
+                                    <form id="delete-form-{{ $team->id }}"
+                                        action="{{ route('team.destroy', ['team'=>$team->id]) }}" method="POST"
+                                        class="d-none">
                                         @method('DELETE')
                                         @csrf
                                     </form>

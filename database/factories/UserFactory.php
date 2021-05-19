@@ -35,6 +35,7 @@ class UserFactory extends Factory
             'first_name' => $this->faker->firstName(),
             'last_name' => $this->faker->lastName(),
             'email' => $this->faker->email(),
+            'role_id' => random_int(1, 5),
             'profile_pic' => $this->faker->imageUrl(),
             'email_verified_at' => now(),
             'password' => Hash::make('password'), // password

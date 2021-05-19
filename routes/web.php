@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\RoleController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\TeamController;
 use App\Http\Controllers\TestmonialController;
@@ -47,4 +48,5 @@ Route::prefix('admin')->group(function () {
     Route::resource('testimonial', TestmonialController::class);
     Route::resource('service', ServiceController::class);
     Route::resource('team', TeamController::class);
+    Route::resource('role', RoleController::class);
 });

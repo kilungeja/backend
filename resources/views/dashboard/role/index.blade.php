@@ -9,36 +9,34 @@
                 @include('dashboard.includes.nav')
             </div>
             <div class="col-md-10">
-                <a href="{{ route('service.create') }}" class=" ">Add service</a>
-                @if (!$services->count())
-                <h4 class="text-center">No services at the moment</h4>
+                <a href="{{ route('role.create') }}" class=" ">Add role</a>
+                @if (!$roles->count())
+                <h4 class="text-center">No role at the moment</h4>
                 @else
                 <div class="table-responsive-sm">
                     <table class="table">
                         <thead>
                             <tr>
                                 <th scope="col">#</th>
-                                <th scope="col">service</th>
-                                <th scope="col">Description </th>
+                                <th scope="col">role name</th>
                                 <th scope="col">Date</th>
                                 <th scope="col">Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($services as $service)
+                            @foreach ($roles as $role)
                             <tr>
                                 <th scope="row">{{ $loop->index + 1 }}</th>
-                                <td>{{ $service->title }}</td>
-                                <td>{{ $service->description }}</td>
-                                <td>{{ $service->created_at->diffForHumans() }}</td>
+                                <td>{{ $role->role_name }}</td>
+                                <td>{{ $role->created_at->diffForHumans() }}</td>
                                 <td>
-                                    <a href="{{ route('service.edit', ['service'=>$service->id]) }}"
-                                        class="text-success"><i class="far fa-edit"></i></a>
+                                    <a href="{{ route('role.edit', ['role'=>$role->id]) }}" class="text-success"><i
+                                            class="far fa-edit"></i></a>
                                     <a href="#!"
-                                        onclick="javascript:document.getElementById('delete-form-{{ $service->id }}').submit()"
+                                        onclick="javascript:document.getElementById('delete-form-{{ $role->id }}').submit()"
                                         class="text-danger"><i class="far fa-trash-alt"></i></a>
-                                    <form id="delete-form-{{ $service->id }}"
-                                        action="{{ route('service.destroy', ['service'=>$service->id]) }}" method="POST"
+                                    <form id="delete-form-{{ $role->id }}"
+                                        action="{{ route('role.destroy', ['role'=>$role->id]) }}" method="POST"
                                         class="d-none">
                                         @method('DELETE')
                                         @csrf
@@ -50,7 +48,7 @@
                         </tbody>
                     </table>
                 </div>
-                {{ $services->links() }}
+                {{ $roles->links() }}
                 @endif
 
             </div>

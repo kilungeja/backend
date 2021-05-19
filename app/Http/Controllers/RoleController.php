@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 
 class RoleController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +18,9 @@ class RoleController extends Controller
      */
     public function index()
     {
-        //
+        $roles = Role::latest()->paginate();
+        $data = ['roles' => $roles];
+        return view('dashboard.role.index', $data);
     }
 
     /**
@@ -24,7 +30,7 @@ class RoleController extends Controller
      */
     public function create()
     {
-        //
+        return view('dashboard.role.create');
     }
 
     /**
@@ -35,7 +41,19 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $form_data = $this->validate($request, [
+            "role_name" => "required",
+        ]);
+        $role = new Role($form_data);
+
+        try {
+            if (!$role->save()) {
+                return back();
+            }
+            return redirect()->route('role.index');
+        } catch (\Throwable $th) {
+            return back();
+        }
     }
 
     /**
@@ -57,7 +75,9 @@ class RoleController extends Controller
      */
     public function edit(Role $role)
     {
-        //
+        $data = ['role' => $role];
+
+        return view('dashboard.role.edit', $data);
     }
 
     /**
@@ -69,7 +89,15 @@ class RoleController extends Controller
      */
     public function update(Request $request, Role $role)
     {
-        //
+        $form_data = $this->validate($request, [
+            "role_name" => "required",
+        ]);
+
+        if (!$role->update($form_data)) {
+            return back();
+        }
+
+        return redirect()->route('role.index');
     }
 
     /**
@@ -80,6 +108,7 @@ class RoleController extends Controller
      */
     public function destroy(Role $role)
     {
-        //
+        $role->delete();
+        return redirect()->route('role.index');
     }
 }

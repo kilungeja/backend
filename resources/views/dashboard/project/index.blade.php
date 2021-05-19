@@ -32,9 +32,10 @@
                                 <td>
                                     <a href="{{ route('project.edit', ['project'=>$project->id]) }}"
                                         class="text-success"><i class="far fa-edit"></i></a>
-                                    <a href="#!" onclick="javascript:document.getElementById('delete-form').submit()"
+                                    <a href="#!"
+                                        onclick="javascript:document.getElementById('delete-form-{{ $project->id }}').submit()"
                                         class="text-danger"><i class="far fa-trash-alt"></i></a>
-                                    <form id="delete-form"
+                                    <form id="delete-form-{{ $project->id }}"
                                         action="{{ route('project.destroy', ['project'=>$project->id]) }}" method="POST"
                                         class="d-none">
                                         @method('DELETE')

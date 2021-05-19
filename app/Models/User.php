@@ -21,6 +21,7 @@ class User extends Authenticatable
         'last_name',
         'email',
         'linkedIn_account',
+        'role_id',
         'password',
         'profile_pic'
     ];
@@ -46,6 +47,11 @@ class User extends Authenticatable
 
     public function projects()
     {
-        $this->hasMany(Project::class);
+        return $this->hasMany(Project::class);
+    }
+
+    public function role()
+    {
+        return $this->belongsTo(Role::class);
     }
 }

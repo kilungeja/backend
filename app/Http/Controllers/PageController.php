@@ -17,7 +17,7 @@ class PageController extends Controller
         $projects = Project::with('images')->latest()->limit(5)->get();
         $testmonials = Testmonial::latest()->get();
         $services = Service::latest()->get();
-        $team_members = User::latest()->get();
+        $team_members = User::with('role')->latest()->get();
         $data = ["testmonials" => $testmonials, "projects" => $projects, "services" => $services, "team_members" => $team_members];
         return view('pages/index', $data);
     }
