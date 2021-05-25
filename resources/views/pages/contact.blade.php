@@ -24,7 +24,7 @@
 
                 <div class="mb-4">
                     <h6 class="mt-5 section-sub-title text-uppercase">e-mail</h6>
-                    <p class="">info@caravanimedia.com</p>
+                    <p class="">info@caravanimedia.co</p>
                 </div>
 
             </div>
@@ -45,7 +45,7 @@
         <p class="mb-4" data-aos="fade-up">Do you have a project you would like to work with us on? Send us the
             details now! Let’s work
             together.<br>
-            For job enquiries, please email <strong> info@caravanmedia.com</strong> with your CV.</p>
+            For job enquiries, please email <strong> info@caravanmedia.co</strong> with your CV.</p>
 
         <form action="{{ route('contact.post') }}" method="POST" data-aos="fade-up">
             <div class="row">
